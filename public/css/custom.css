@@ -1,0 +1,458 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --bg-main: #f8fafc;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --border-color: #e2e8f0;
+    --border-light: #f1f5f9;
+    --card-bg: #ffffff;
+    --primary-color: #0f172a;
+    --primary-accent: #4f46e5;
+    --emerald-bg: #ecfdf5;
+    --emerald-text: #059669;
+    --emerald-border: #a7f3d0;
+    --blue-bg: #eff6ff;
+    --blue-text: #2563eb;
+    --blue-border: #bfdbfe;
+    --amber-bg: #fffbeb;
+    --amber-text: #d97706;
+    --amber-border: #fde68a;
+    --rose-bg: #fff1f2;
+    --rose-text: #e11d48;
+    --rose-border: #fecdd3;
+    --slate-bg: #f1f5f9;
+    --slate-text: #475569;
+    --slate-border: #e2e8f0;
+}
+
+body {
+    font-family: var(--font-sans);
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Solid Crisp Navbar */
+.app-navbar {
+    background: #ffffff;
+    border-bottom: 1px solid var(--border-color);
+    transition: all 0.2s ease;
+}
+
+.brand-icon {
+    width: 38px;
+    height: 38px;
+    background: #0f172a;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 1.15rem;
+}
+
+.brand-title {
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #0f172a;
+    font-size: 1.2rem;
+}
+
+.brand-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    background: #ecfdf5;
+    color: #047857;
+    padding: 2px 8px;
+    border-radius: 6px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    border: 1px solid #a7f3d0;
+}
+
+.nav-pill-link {
+    color: var(--text-secondary);
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.5rem 0.85rem;
+    border-radius: 8px;
+    transition: all 0.15s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    min-height: 40px;
+}
+
+.nav-pill-link:hover {
+    color: var(--text-primary);
+    background: #f1f5f9;
+}
+
+.nav-pill-link.active {
+    color: #0f172a;
+    background: #e2e8f0;
+}
+
+.user-chip {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 0.3rem 0.65rem;
+    border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+}
+
+.user-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: #0f172a;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+/* Modern Card System */
+.modern-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+}
+
+.modern-card-hover {
+    cursor: pointer;
+}
+
+.modern-card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
+    border-color: #cbd5e1;
+}
+
+a.text-decoration-none:hover {
+    text-decoration: none;
+}
+
+.stat-icon-wrapper {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-secondary);
+}
+
+.stat-value {
+    font-size: 1.55rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+.stat-subtext {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+/* Modern Table */
+.modern-table-container {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.03);
+}
+
+.modern-table {
+    margin-bottom: 0;
+    width: 100%;
+}
+
+.modern-table thead th {
+    background: #f8fafc;
+    color: #64748b;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    padding: 0.9rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+    white-space: nowrap;
+}
+
+.modern-table tbody td {
+    padding: 0.95rem 1rem;
+    vertical-align: middle;
+    border-bottom: 1px solid var(--border-light);
+    color: #334155;
+    font-size: 0.875rem;
+}
+
+.modern-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.modern-table tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+/* Modern Soft Badges */
+.badge-soft {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.35rem 0.75rem;
+    border-radius: 9999px;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    line-height: 1.2;
+    border: 1px solid transparent;
+}
+
+.badge-soft-emerald {
+    background-color: var(--emerald-bg);
+    color: var(--emerald-text);
+    border-color: var(--emerald-border);
+}
+
+.badge-soft-blue {
+    background-color: var(--blue-bg);
+    color: var(--blue-text);
+    border-color: var(--blue-border);
+}
+
+.badge-soft-amber {
+    background-color: var(--amber-bg);
+    color: var(--amber-text);
+    border-color: var(--amber-border);
+}
+
+.badge-soft-rose {
+    background-color: var(--rose-bg);
+    color: var(--rose-text);
+    border-color: var(--rose-border);
+}
+
+.badge-soft-slate {
+    background-color: var(--slate-bg);
+    color: var(--slate-text);
+    border-color: var(--slate-border);
+}
+
+/* Modern Buttons */
+.btn-dark-brand {
+    background-color: #0f172a;
+    color: #ffffff;
+    border: 1px solid #0f172a;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.55rem 1.15rem;
+    border-radius: 10px;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.btn-dark-brand:hover {
+    background-color: #1e293b;
+    border-color: #1e293b;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.15);
+}
+
+.btn-emerald-brand {
+    background-color: #10b981;
+    color: #ffffff;
+    border: 1px solid #10b981;
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.55rem 1.15rem;
+    border-radius: 10px;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.btn-emerald-brand:hover {
+    background-color: #059669;
+    border-color: #059669;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+}
+
+.btn-outline-soft {
+    background-color: #ffffff;
+    color: #334155;
+    border: 1px solid var(--border-color);
+    font-weight: 600;
+    font-size: 0.875rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 10px;
+    transition: all 0.15s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+}
+
+.btn-outline-soft:hover {
+    background-color: #f8fafc;
+    color: #0f172a;
+    border-color: #cbd5e1;
+}
+
+.btn-action-sm {
+    padding: 0.35rem 0.65rem;
+    font-size: 0.8rem;
+    border-radius: 8px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+/* Modern Form Controls */
+.form-control, .form-select {
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.9rem;
+    color: #1e293b;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    min-height: 42px;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #059669;
+    box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.15);
+}
+
+.form-label {
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: #334155;
+    margin-bottom: 0.4rem;
+}
+
+/* Modern Section Headers */
+.section-title {
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #0f172a;
+    font-size: 1.4rem;
+}
+
+.section-subtitle {
+    font-size: 0.85rem;
+    color: #64748b;
+}
+
+/* Modern Pill Tabs / Filter bar */
+.filter-card {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+}
+
+/* Product thumbnail */
+.product-thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 1px solid var(--border-color);
+}
+
+.product-thumb-placeholder {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: #f1f5f9;
+    border: 1px solid var(--border-color);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #94a3b8;
+    font-size: 1.1rem;
+}
+
+/* Responsivitas Layar HP & Tablet */
+@media (max-width: 991.98px) {
+    .app-navbar {
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+    .navbar-collapse {
+        background: #ffffff;
+        border-top: 1px solid var(--border-color);
+        margin-top: 0.5rem;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+    }
+    .nav-pill-link {
+        padding: 0.65rem 0.85rem;
+        width: 100%;
+        margin-bottom: 2px;
+    }
+    .user-chip {
+        width: 100%;
+        justify-content: flex-start;
+        margin-bottom: 0.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        font-size: 14.5px;
+        overflow-x: hidden;
+    }
+    .container {
+        padding-left: 14px;
+        padding-right: 14px;
+    }
+    .section-title {
+        font-size: 1.25rem;
+    }
+    .stat-value {
+        font-size: 1.35rem;
+    }
+    .stat-icon-wrapper {
+        width: 38px;
+        height: 38px;
+        font-size: 1.1rem;
+    }
+    .modern-card {
+        border-radius: 10px;
+    }
+    .btn-dark-brand, .btn-emerald-brand, .btn-outline-soft {
+        min-height: 42px;
+        font-size: 0.85rem;
+    }
+    .table-responsive {
+        -webkit-overflow-scrolling: touch;
+    }
+}
