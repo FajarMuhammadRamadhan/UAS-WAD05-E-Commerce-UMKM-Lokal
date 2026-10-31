@@ -118,8 +118,8 @@ Aplikasi dapat langsung diuji di **[http://103.142.202.202](http://103.142.202.2
 
 1. **Clone repository:**
    ```bash
-   git clone https://github.com/fajar-mr/25120300023-fajarmuhammadramadhan-warungkita.git
-   cd 25120300023-fajarmuhammadramadhan-warungkita
+   git clone https://github.com/FajarMuhammadRamadhan/UAS-WAD05-E-Commerce-UMKM-Lokal.git
+   cd UAS-WAD05-E-Commerce-UMKM-Lokal
    ```
 
 2. **Install dependensi Composer:**
@@ -215,7 +215,7 @@ php artisan test
 │   └── warungkita_db.sql                # Backup Dump SQL Database
 ├── public/
 │   ├── css/custom.css                   # Stylesheet Khusus Mobile-First & Anti-Slop
-│   ├── warungkita.svg                   # Logo Identitas Brand Toko
+│   ├── warunggenz.svg                   # Logo Identitas Brand Toko
 │   └── index.php                        # Entry Point Aplikasi
 ├── resources/views/
 │   ├── auth/                            # Tampilan Login & Register
@@ -227,7 +227,7 @@ php artisan test
 │   └── web.php                          # Deklarasi Routing & Group Middleware
 ├── tests/
 │   ├── Feature/
-│   │   └── WarungKitaWorkflowTest.php   # 17 Test Case Alur Lengkap Sistem
+│   │   └── WarungGenZWorkflowTest.php   # 17 Test Case Alur Lengkap Sistem
 │   └── Unit/
 ├── DOKUMEN_LAPORAN_UAS.md               # Laporan Lengkap Dokumentasi Akademik UAS
 ├── README.md                            # Panduan & Dokumentasi Repository GitHub

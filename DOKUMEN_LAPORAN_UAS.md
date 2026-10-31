@@ -196,7 +196,7 @@ Aplikasi telah disiapkan agar siap di-deploy secara online melalui penyedia clou
 
 ### Langkah Deployment ke Railway:
 1. Buat akun pada platform [Railway.app](https://railway.app).
-2. Hubungkan akun GitHub dan pilih repository project `25120300023-fajarmuhammadramadhan-warungkita`.
+2. Hubungkan akun GitHub dan pilih repository project `UAS-WAD05-E-Commerce-UMKM-Lokal`.
 3. Tambahkan plugin **Database MySQL** di Railway.
 4. Salin variabel koneksi database (`MYSQLHOST`, `MYSQLPORT`, `MYSQLUSER`, `MYSQLPASSWORD`, `MYSQLDATABASE`) ke menu **Variables** web service.
 5. Tambahkan variable:
@@ -207,7 +207,7 @@ Aplikasi telah disiapkan agar siap di-deploy secara online melalui penyedia clou
    ```bash
    php artisan migrate --force && php artisan db:seed --force && php artisan storage:link && php artisan serve --host=0.0.0.0 --port=$PORT
    ```
-7. Aplikasi berhasil aktif dengan domain live publik (contoh: `https://warungkita-production.up.railway.app`).
+7. Aplikasi berhasil aktif dengan domain live publik (contoh: `https://warunggenz-production.up.railway.app`).
 
 ---
 

@@ -11,7 +11,7 @@ use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class WarungKitaWorkflowTest extends TestCase
+class WarungGenZWorkflowTest extends TestCase
 {
     use RefreshDatabase;
 

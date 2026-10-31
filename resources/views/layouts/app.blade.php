@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'WarungGenZ - Sistem Inventaris & Penjualan UMKM')</title>
-    <link rel="icon" type="image/svg+xml" href="{{ asset('warungkita.svg') }}?v=1">
+    <link rel="icon" type="image/svg+xml" href="{{ asset('warunggenz.svg') }}?v=1">
     
     <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

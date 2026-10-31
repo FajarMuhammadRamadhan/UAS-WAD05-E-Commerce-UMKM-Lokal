@@ -58,14 +58,6 @@
                 <i class="bi bi-arrow-left me-1"></i> Pesanan Saya
             </a>
             <div class="d-flex gap-2 flex-wrap">
-                @if($order->status === 'pending')
-                <button type="button" class="btn btn-outline-primary btn-sm rounded-pill px-3 fw-semibold shadow-sm" data-bs-toggle="modal" data-bs-target="#changePaymentModal">
-                    <i class="bi bi-arrow-left-right me-1"></i> Ganti Metode
-                </button>
-                <button type="button" class="btn btn-outline-danger btn-sm rounded-pill px-3 fw-semibold shadow-sm" data-bs-toggle="modal" data-bs-target="#customerCancelModal">
-                    <i class="bi bi-x-circle me-1"></i> Batalkan Pesanan
-                </button>
-                @endif
                 @php
                     $waText = urlencode("Halo WarungGenZ, saya ingin konfirmasi pesanan *{$order->invoice_number}* atas nama *{$order->customer_name}* total *Rp " . number_format($order->total_price, 0, ',', '.') . "*. Mohon bantuannya ya!");
                 @endphp
@@ -77,14 +69,6 @@
                 </button>
             </div>
         </div>
-
-        <!-- Alert Notifikasi Pembayaran -->
-        @if(session('success'))
-        <div class="alert alert-success rounded-4 shadow-sm mb-4 no-print d-flex align-items-center gap-2">
-            <i class="bi bi-check-circle-fill fs-5 text-success"></i>
-            <div>{{ session('success') }}</div>
-        </div>
-        @endif
 
         <!-- Tracker Status Pesanan -->
         <div class="modern-card p-4 mb-4 no-print">
