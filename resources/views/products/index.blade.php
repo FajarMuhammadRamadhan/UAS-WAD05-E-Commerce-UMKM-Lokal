@@ -143,7 +143,7 @@
 <!-- Header Daftar Produk -->
 <div class="row align-items-center mb-3 g-2">
     <div class="col-lg-6">
-        <h3 class="section-title mb-1">{{ $isAdmin ? 'Daftar Produk WarungKita' : 'Katalog Produk WarungKita' }}</h3>
+        <h3 class="section-title mb-1">{{ $isAdmin ? 'Daftar Produk WarungGenZ' : 'Katalog Produk WarungGenZ' }}</h3>
         <p class="section-subtitle mb-0">{{ $isAdmin ? 'Kelola katalog produk, update stok barang, dan kontrol harga.' : 'Lihat ketersediaan produk, varian kategori, dan informasi harga.' }}</p>
     </div>
     @if(!empty($canManageOrders) || $isAdmin)

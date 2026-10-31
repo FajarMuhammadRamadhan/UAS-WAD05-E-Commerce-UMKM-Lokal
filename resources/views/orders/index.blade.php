@@ -5,7 +5,7 @@
 <div class="row align-items-center mb-4 g-2">
     <div class="col-lg-6">
         <h3 class="section-title mb-1">Riwayat Transaksi Penjualan</h3>
-        <p class="section-subtitle mb-0">Catatan faktur penjualan dan status pembayaran produk WarungKita.</p>
+        <p class="section-subtitle mb-0">Catatan faktur penjualan dan status pembayaran produk WarungGenZ.</p>
     </div>
     <div class="col-lg-6 text-lg-end d-flex flex-wrap gap-2 justify-content-lg-end mt-2 mt-lg-0">
         <a href="{{ route('orders.create') }}" class="btn-emerald-brand text-decoration-none">

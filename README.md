@@ -1,4 +1,4 @@
-# WarungKita - Sistem E-Commerce & Manajemen Produk UMKM Lokal
+# WarungGenZ - Sistem E-Commerce & Manajemen Produk UMKM Lokal
 
 > **Tugas Ujian Akhir Semester (UAS) Web Application Development**  
 > **Universitas Cakrawala**  
@@ -13,7 +13,7 @@
 
 ## 📌 Ringkasan Project
 
-**WarungKita** adalah aplikasi web inventaris dan belanja online (*e-commerce*) yang dirancang khusus untuk memenuhi kebutuhan digitalisasi toko kelontong dan UMKM lokal. Aplikasi ini memungkinkan pemilik toko mengelola produk, stok, transaksi kasir fisik (POS), pengeluaran operasional, serta menerima pesanan belanja online dari pelanggan secara *real-time*.
+**WarungGenZ** adalah aplikasi web inventaris dan belanja online (*e-commerce*) yang dirancang khusus untuk memenuhi kebutuhan digitalisasi toko kelontong dan UMKM lokal. Aplikasi ini memungkinkan pemilik toko mengelola produk, stok, transaksi kasir fisik (POS), pengeluaran operasional, serta menerima pesanan belanja online dari pelanggan secara *real-time*.
 
 Aplikasi dibangun menggunakan arsitektur **Model-View-Controller (MVC)** dengan framework **Laravel 12**, basis data relasional **MySQL**, antarmuka responsif **Bootstrap 5**, serta notifikasi interaktif **SweetAlert2**.
 

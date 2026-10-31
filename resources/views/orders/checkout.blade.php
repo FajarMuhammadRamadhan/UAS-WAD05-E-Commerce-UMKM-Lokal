@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Pemesanan Online - WarungKita')
+@section('title', 'Pemesanan Online - WarungGenZ')
 
 @section('content')
 <style>
@@ -87,7 +87,7 @@ input[type=number] {
         <div class="row align-items-center mb-4 g-2">
             <div class="col-md-7">
                 <h3 class="section-title mb-1">
-                    <i class="bi bi-cart3 me-2 text-primary"></i>Pemesanan Online WarungKita
+                    <i class="bi bi-cart3 me-2 text-primary"></i>Pemesanan Online WarungGenZ
                 </h3>
                 <p class="section-subtitle mb-0">Pilih produk sembako & kebutuhan harian, pesanan akan langsung disiapkan.</p>
             </div>
@@ -187,7 +187,7 @@ input[type=number] {
                                     <input class="form-check-input" type="radio" name="payment_method" id="pay_transfer" value="transfer" {{ old('payment_method') === 'transfer' ? 'checked' : '' }}>
                                     <label class="form-check-label fw-bold text-dark d-block" for="pay_transfer">
                                         <i class="bi bi-bank text-primary me-1"></i> Transfer Bank Manual
-                                        <div class="fw-normal small text-muted">BCA / Mandiri / BRI Toko WarungKita.</div>
+                                        <div class="fw-normal small text-muted">BCA / Mandiri / BRI Toko WarungGenZ.</div>
                                     </label>
                                 </div>
                                 <div class="form-check p-3 border rounded-3 bg-light">

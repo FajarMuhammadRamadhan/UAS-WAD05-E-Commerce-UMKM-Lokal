@@ -184,7 +184,7 @@
                             <!-- Dropdown Box Berisi Daftar Barang Persegi Panjang -->
                             <div class="product-picker-dropdown d-none">
                                 <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="small fw-bold text-dark">Daftar Produk WarungKita</span>
+                                    <span class="small fw-bold text-dark">Daftar Produk WarungGenZ</span>
                                     <button type="button" class="btn-close btn-sm btn-close-picker" aria-label="Close"></button>
                                 </div>
 
@@ -250,7 +250,7 @@
                             <!-- Hidden Select untuk Form Submit & Validasi Backend -->
                             <select class="form-select item-product d-none @error('items.'.$index.'.product_id') is-invalid @enderror"
                                     name="items[{{ $index }}][product_id]" required>
-                                <option value="">-- Pilih Produk WarungKita --</option>
+                                <option value="">-- Pilih Produk WarungGenZ --</option>
                                 @foreach($products as $prod)
                                     <option value="{{ $prod->id }}"
                                             data-price="{{ $prod->price }}"
@@ -350,7 +350,7 @@
 
                             <div class="product-picker-dropdown d-none">
                                 <div class="d-flex justify-content-between align-items-center mb-2">
-                                    <span class="small fw-bold text-dark">Daftar Produk WarungKita</span>
+                                    <span class="small fw-bold text-dark">Daftar Produk WarungGenZ</span>
                                     <button type="button" class="btn-close btn-sm btn-close-picker" aria-label="Close"></button>
                                 </div>
 
@@ -411,7 +411,7 @@
                             </div>
 
                             <select class="form-select item-product d-none" name="items[__INDEX__][product_id]" required>
-                                <option value="">-- Pilih Produk WarungKita --</option>
+                                <option value="">-- Pilih Produk WarungGenZ --</option>
                                 @foreach($products as $prod)
                                     <option value="{{ $prod->id }}"
                                             data-price="{{ $prod->price }}"
@@ -493,7 +493,7 @@
             <div class="modal-header border-bottom pb-3">
                 <div>
                     <h5 class="modal-title fw-bold text-dark mb-1" id="productCatalogModalLabel">
-                        <i class="bi bi-grid me-2 text-primary"></i>Katalog Produk WarungKita
+                        <i class="bi bi-grid me-2 text-primary"></i>Katalog Produk WarungGenZ
                     </h5>
                     <p class="text-muted small mb-0">Cari produk berdasarkan nama atau filter kategori agar cepat ditemukan.</p>
                 </div>

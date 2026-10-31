@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Pesanan Saya - WarungKita')
+@section('title', 'Pesanan Saya - WarungGenZ')
 
 @section('content')
 <div class="row align-items-center mb-4 g-2">
@@ -109,7 +109,7 @@
                     <td colspan="8" class="text-center py-5 text-muted">
                         <i class="bi bi-cart-x fs-1 d-block mb-2 text-secondary"></i>
                         <h6 class="fw-bold text-dark">Belum Ada Pesanan</h6>
-                        <p class="small text-muted mb-3">Anda belum pernah melakukan pemesanan online di WarungKita.</p>
+                        <p class="small text-muted mb-3">Anda belum pernah melakukan pemesanan online di WarungGenZ.</p>
                         <a href="{{ route('orders.checkout') }}" class="btn-emerald-brand text-decoration-none">
                             <i class="bi bi-cart-plus me-1"></i> Belanja Sekarang
                         </a>
@@ -182,7 +182,7 @@
     <div class="modern-card p-4 text-center text-muted">
         <i class="bi bi-cart-x fs-1 d-block mb-2 text-secondary"></i>
         <h6 class="fw-bold text-dark">Belum Ada Pesanan</h6>
-        <p class="small text-muted mb-3">Anda belum pernah melakukan pemesanan online di WarungKita.</p>
+        <p class="small text-muted mb-3">Anda belum pernah melakukan pemesanan online di WarungGenZ.</p>
         <a href="{{ route('orders.checkout') }}" class="btn-emerald-brand text-decoration-none">
             <i class="bi bi-cart-plus me-1"></i> Belanja Sekarang
         </a>

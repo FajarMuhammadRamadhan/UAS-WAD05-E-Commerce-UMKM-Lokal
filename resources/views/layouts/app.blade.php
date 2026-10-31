@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'WarungKita - Sistem Inventaris & Penjualan UMKM')</title>
+    <title>@yield('title', 'WarungGenZ - Sistem Inventaris & Penjualan UMKM')</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('warungkita.svg') }}?v=1">
     
     <!-- Google Fonts: Plus Jakarta Sans -->
@@ -28,7 +28,7 @@
                     <i class="bi bi-shop"></i>
                 </div>
                 <div class="d-flex align-items-center gap-2">
-                    <span class="brand-title">WarungKita</span>
+                    <span class="brand-title">WarungGenZ</span>
                     <span class="brand-badge">UMKM</span>
                 </div>
             </a>

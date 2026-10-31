@@ -15,7 +15,7 @@
                             <i class="bi bi-shop"></i>
                         </div>
                         <div>
-                            <span class="brand-title" style="font-size: 1.35rem;">WarungKita</span>
+                            <span class="brand-title" style="font-size: 1.35rem;">WarungGenZ</span>
                             <span class="brand-badge ms-1">UMKM</span>
                         </div>
                     </div>
@@ -47,7 +47,7 @@
                         } elseif (Auth::check() && Auth::user()->canManageOrders()) {
                             $staffName = Auth::user()->name;
                         } else {
-                            $staffName = 'Petugas WarungKita';
+                            $staffName = 'Petugas WarungGenZ';
                         }
                     @endphp
                     <span class="badge-soft {{ $badgeStyle }}">
@@ -156,7 +156,7 @@
                     <div class="col-8 col-sm-8">
                         <div class="small fw-semibold text-dark mb-1">Catatan Penting:</div>
                         <ul class="text-muted small ps-3 mb-0" style="font-size: 0.8rem; line-height: 1.5;">
-                            <li>Terima kasih telah berbelanja di <strong>WarungKita</strong>.</li>
+                            <li>Terima kasih telah berbelanja di <strong>WarungGenZ</strong>.</li>
                             <li>Barang yang sudah dibeli dapat ditukar maksimal 1x24 jam dengan membawa nota ini.</li>
                             <li>Faktur ini merupakan bukti pembayaran yang sah dan terdata dalam sistem.</li>
                         </ul>

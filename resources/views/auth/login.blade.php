@@ -8,7 +8,7 @@
                 <div class="brand-icon mx-auto mb-3" style="width: 48px; height: 48px; font-size: 1.35rem; border-radius: 14px;">
                     <i class="bi bi-shop"></i>
                 </div>
-                <h4 class="fw-bold text-dark mb-1">Masuk ke WarungKita</h4>
+                <h4 class="fw-bold text-dark mb-1">Masuk ke WarungGenZ</h4>
                 <p class="text-muted small">Kelola stok inventaris & transaksi toko UMKM.</p>
             </div>
 

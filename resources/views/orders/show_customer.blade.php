@@ -67,7 +67,7 @@
                 </button>
                 @endif
                 @php
-                    $waText = urlencode("Halo WarungKita, saya ingin konfirmasi pesanan *{$order->invoice_number}* atas nama *{$order->customer_name}* total *Rp " . number_format($order->total_price, 0, ',', '.') . "*. Mohon bantuannya ya!");
+                    $waText = urlencode("Halo WarungGenZ, saya ingin konfirmasi pesanan *{$order->invoice_number}* atas nama *{$order->customer_name}* total *Rp " . number_format($order->total_price, 0, ',', '.') . "*. Mohon bantuannya ya!");
                 @endphp
                 <a href="https://wa.me/6281234567890?text={{ $waText }}" target="_blank" class="btn btn-outline-success btn-sm rounded-pill px-3 fw-semibold">
                     <i class="bi bi-whatsapp me-1"></i> WhatsApp Toko
@@ -135,7 +135,7 @@
                                 <strong>Penyebab Dibatalkan:</strong> <span class="text-danger fst-italic">"{{ $order->cancellation_reason }}"</span>
                             </div>
                         @endif
-                        <div class="small text-muted">Seluruh stok produk telah dikembalikan ke inventaris toko WarungKita.</div>
+                        <div class="small text-muted">Seluruh stok produk telah dikembalikan ke inventaris toko WarungGenZ.</div>
                     </div>
                 </div>
             </div>
@@ -186,21 +186,21 @@
                     <i class="bi bi-bank fs-4"></i>
                 </div>
                 <h5 class="fw-bold text-dark mb-1">Instruksi Pembayaran Transfer Bank</h5>
-                <p class="text-muted small mb-3">Silakan transfer nominal pas ke salah satu rekening resmi WarungKita UMKM berikut:</p>
+                <p class="text-muted small mb-3">Silakan transfer nominal pas ke salah satu rekening resmi WarungGenZ UMKM berikut:</p>
 
                 <div class="row g-2 justify-content-center mb-3">
                     <div class="col-sm-6">
                         <div class="p-3 bg-white rounded-3 border">
                             <span class="badge bg-primary-subtle text-primary mb-1">BCA</span>
                             <div class="fw-bold fs-5 text-dark">8830-1928-33</div>
-                            <small class="text-muted">a.n WarungKita UMKM</small>
+                            <small class="text-muted">a.n WarungGenZ UMKM</small>
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="p-3 bg-white rounded-3 border">
                             <span class="badge bg-warning-subtle text-dark mb-1">Mandiri</span>
                             <div class="fw-bold fs-5 text-dark">132-00-9876543-1</div>
-                            <small class="text-muted">a.n WarungKita UMKM</small>
+                            <small class="text-muted">a.n WarungGenZ UMKM</small>
                         </div>
                     </div>
                 </div>
@@ -213,11 +213,11 @@
                 <div class="stat-icon-wrapper mx-auto mb-2" style="background: #eff6ff; color: #2563eb; width: 48px; height: 48px;">
                     <i class="bi bi-qr-code-scan fs-4"></i>
                 </div>
-                <h5 class="fw-bold text-dark mb-1">Scan QRIS WarungKita</h5>
+                <h5 class="fw-bold text-dark mb-1">Scan QRIS WarungGenZ</h5>
                 <p class="text-muted small mb-3">Buka aplikasi mobile banking atau e-wallet (GoPay, OVO, Dana, LinkAja, BCA, dll) lalu scan QR code berikut:</p>
 
                 <div class="qris-box mb-3">
-                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=WarungKita-{{ $order->invoice_number }}-Rp{{ $order->total_price }}" alt="QRIS WarungKita" class="img-fluid" style="width: 180px; height: 180px;">
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=WarungGenZ-{{ $order->invoice_number }}-Rp{{ $order->total_price }}" alt="QRIS WarungGenZ" class="img-fluid" style="width: 180px; height: 180px;">
                     <div class="fw-bold text-dark mt-2 small">QRIS Standar Pembayaran Nasional</div>
                 </div>
 
@@ -285,7 +285,7 @@
         </div>
         @endif
 
-        <!-- Card Nota Faktur Resmi WarungKita (Bisa Dicetak) -->
+        <!-- Card Nota Faktur Resmi WarungGenZ (Bisa Dicetak) -->
         <div class="modern-card p-3 p-sm-4 p-md-5" id="printableInvoice">
             <!-- Header Nota -->
             <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-4">
@@ -294,7 +294,7 @@
                         <i class="bi bi-shop"></i>
                     </div>
                     <div>
-                        <div class="brand-title" style="font-size: 1.4rem;">WarungKita</div>
+                        <div class="brand-title" style="font-size: 1.4rem;">WarungGenZ</div>
                         <small class="text-muted d-block">Inventaris & Belanja Online UMKM</small>
                     </div>
                 </div>
@@ -338,7 +338,7 @@
                 </div>
                 <div class="col-12 border-top pt-2 mt-2">
                     <div class="text-muted small text-uppercase fw-semibold mb-1">Alamat Pengantaran:</div>
-                    <div class="text-dark">{{ $order->customer_address ?? 'Ambil di Tempat / Toko WarungKita' }}</div>
+                    <div class="text-dark">{{ $order->customer_address ?? 'Ambil di Tempat / Toko WarungGenZ' }}</div>
                     @if($order->notes)
                         <div class="text-muted mt-1"><em>Catatan: {{ $order->notes }}</em></div>
                     @endif
@@ -388,7 +388,7 @@
 
             <!-- Footer Nota -->
             <div class="p-3 bg-light rounded-4 text-center text-muted small border">
-                <div class="fw-semibold text-dark mb-1">Terima Kasih Telah Berbelanja di WarungKita UMKM!</div>
+                <div class="fw-semibold text-dark mb-1">Terima Kasih Telah Berbelanja di WarungGenZ UMKM!</div>
                 <div>Nota ini adalah bukti sah transaksi pemesanan belanja online. Simpan nota ini untuk pengecekan saat kurir tiba.</div>
             </div>
         </div>
@@ -438,7 +438,7 @@
                                 <div class="fw-bold text-dark d-flex align-items-center gap-2">
                                     <i class="bi bi-bank text-primary fs-5"></i> Transfer Bank Manual
                                 </div>
-                                <small class="text-muted d-block mt-1">Transfer langsung ke rekening resmi BCA / Mandiri WarungKita.</small>
+                                <small class="text-muted d-block mt-1">Transfer langsung ke rekening resmi BCA / Mandiri WarungGenZ.</small>
                             </div>
                         </label>
 

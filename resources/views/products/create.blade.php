@@ -7,7 +7,7 @@
             <div class="d-flex align-items-center justify-content-between border-bottom pb-3 mb-4">
                 <div>
                     <h4 class="fw-bold mb-1 text-dark">Tambah Produk Baru</h4>
-                    <p class="text-muted small mb-0">Lengkapi data barang dagang untuk ditambahkan ke katalog inventaris WarungKita.</p>
+                    <p class="text-muted small mb-0">Lengkapi data barang dagang untuk ditambahkan ke katalog inventaris WarungGenZ.</p>
                 </div>
                 <div class="stat-icon-wrapper" style="background: #eff6ff; color: #2563eb;">
                     <i class="bi bi-box-seam fs-4"></i>

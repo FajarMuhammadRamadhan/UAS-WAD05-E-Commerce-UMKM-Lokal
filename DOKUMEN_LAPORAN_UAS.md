@@ -1,7 +1,7 @@
 # LAPORAN TUGAS AKHIR (UAS) WEB APPLICATION DEVELOPMENT
 ## UNIVERSITAS CAKRAWALA
 
-* **Judul Project:** Sistem E-Commerce & Manajemen Produk UMKM Lokal (WarungKita)
+* **Judul Project:** Sistem E-Commerce & Manajemen Produk UMKM Lokal (WarungGenZ)
 * **Nama Mahasiswa:** Fajar Muhammad Ramadhan
 * **NIM:** 25120300023
 * **Program Studi:** Sistem Informasi / Teknik Informatika
@@ -13,7 +13,7 @@
 ## 1. Identitas & Ringkasan Project (Project Brief)
 
 ### 1.1 Judul & Studi Kasus
-**WarungKita - Sistem E-Commerce & Manajemen Produk UMKM Lokal**  
+**WarungGenZ - Sistem E-Commerce & Manajemen Produk UMKM Lokal**  
 Aplikasi ini dikembangkan untuk memfasilitasi pelaku usaha mikro, kecil, dan menengah (UMKM) dalam mengelola katalog produk, kategori barang, pencatatan transaksi pesanan, serta pemantauan stok secara digital berbasis web full-stack.
 
 ### 1.2 Arsitektur & Teknologi yang Digunakan
@@ -216,13 +216,13 @@ Aplikasi telah disiapkan agar siap di-deploy secara online melalui penyedia clou
 Berikut adalah panduan poin-poin penjelasan resmi yang wajib Anda sampaikan saat merekam video presentasi/demo:
 
 ### 🎤 Bagian 1: Pengenalan & Alur Data (Pattern MVC)
-> *"Halo Bapak/Ibu Dosen penguji, perkenalkan saya Fajar Muhammad Ramadhan dengan NIM 25120300023. Pada kesempatan ini saya akan mempresentasikan hasil pengerjaan UAS Web Application Development, yaitu aplikasi WarungKita. Aplikasi ini mengadopsi arsitektur Model-View-Controller (MVC) murni berbasis Laravel 12. Alur datanya dimulai saat pengguna mengirim request melalui Web Browser, kemudian diterima oleh Routing di routes/web.php. Route akan meneruskan request ke Controller (misalnya ProductController). Controller bertugas mengolah logika bisnis, berkomunikasi dengan Model (seperti Product dan Category) untuk mengambil data dari basis data MySQL menggunakan Eloquent ORM, lalu mengirimkan data tersebut ke View berbasis Blade untuk dirender ke layar pengguna."*
+> *"Halo Bapak/Ibu Dosen penguji, perkenalkan saya Fajar Muhammad Ramadhan dengan NIM 25120300023. Pada kesempatan ini saya akan mempresentasikan hasil pengerjaan UAS Web Application Development, yaitu aplikasi WarungGenZ. Aplikasi ini mengadopsi arsitektur Model-View-Controller (MVC) murni berbasis Laravel 12. Alur datanya dimulai saat pengguna mengirim request melalui Web Browser, kemudian diterima oleh Routing di routes/web.php. Route akan meneruskan request ke Controller (misalnya ProductController). Controller bertugas mengolah logika bisnis, berkomunikasi dengan Model (seperti Product dan Category) untuk mengambil data dari basis data MySQL menggunakan Eloquent ORM, lalu mengirimkan data tersebut ke View berbasis Blade untuk dirender ke layar pengguna."*
 
 ### 🎤 Bagian 2: Struktur Database Relasional
 > *"Basis data yang saya gunakan adalah MySQL relasional dengan 5 tabel yang saling terhubung: tabel users untuk data autentikasi dan role pengguna; tabel categories untuk pengelompokan jenis barang; tabel products yang terhubung ke category_id; serta tabel orders dan order_items untuk mencatat transaksi dan rincian barang yang dibeli secara relasional menggunakan Foreign Key dan cascading delete."*
 
 ### 🎤 Bagian 3: Fitur Unggulan, Sanitasi & Auto-Rupiah
-> *"Salah satu tantangan dalam sistem e-commerce lokal adalah kemudahan input harga. Pada aplikasi WarungKita, saya mengimplementasikan fitur kalkulasi dan masking otomatis rupiah saat pengguna mengetik angka di form harga, sehingga pemisah ribuan titik muncul secara real-time disertai penghitungan estimasi total nilai stok. Di sisi backend, controller saya lengkapi dengan fungsi pembersih (sanitizer) yang mengonversi format teks menjadi nilai numerik murni sebelum divalidasi dan disimpan ke database MySQL."*
+> *"Salah satu tantangan dalam sistem e-commerce lokal adalah kemudahan input harga. Pada aplikasi WarungGenZ, saya mengimplementasikan fitur kalkulasi dan masking otomatis rupiah saat pengguna mengetik angka di form harga, sehingga pemisah ribuan titik muncul secara real-time disertai penghitungan estimasi total nilai stok. Di sisi backend, controller saya lengkapi dengan fungsi pembersih (sanitizer) yang mengonversi format teks menjadi nilai numerik murni sebelum divalidasi dan disimpan ke database MySQL."*
 
 ### 🎤 Bagian 4: Penanganan Error & Implementasi Keamanan (Security)
 > *"Untuk aspek sekuriti, aplikasi menerapkan perlindungan berlapis: proteksi CSRF di seluruh form mutasi data, pencegahan SQL Injection melalui Eloquent parameterized queries, pencegahan XSS dengan data escaping, hashing password menggunakan Bcrypt, serta regenerasi session saat login untuk mencegah session fixation. Selain itu, sistem notifikasi telah terintegrasi dengan SweetAlert2 untuk memberikan feedback visual toast yang interaktif tanpa risiko XSS."*
