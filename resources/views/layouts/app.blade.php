@@ -585,6 +585,63 @@
             @endif
         });
         @endif
+
+        // Session Lifecycle: Logout otomatis jika tab/browser ditutup atau riwayat dibersihkan (mencegah auto-login)
+        @auth
+        (function() {
+            var sessionKey = 'warunggenz_tab_session';
+            var channelName = 'warunggenz_tab_sync';
+
+            // Bersihkan jika pengguna mengklik link / tombol logout
+            document.querySelectorAll('a[href*="logout"], form[action*="logout"]').forEach(function(el) {
+                el.addEventListener('click', function() {
+                    sessionStorage.removeItem(sessionKey);
+                });
+            });
+
+            if (!sessionStorage.getItem(sessionKey)) {
+                // Tab ini baru dibuka tanpa session storage aktif.
+                // Tanyakan ke tab lain (jika ada yang masih terbuka di browser)
+                if (typeof BroadcastChannel !== 'undefined') {
+                    var channel = new BroadcastChannel(channelName);
+                    channel.postMessage({ action: 'QUERY_ACTIVE_SESSION' });
+                    channel.onmessage = function(ev) {
+                        if (ev.data && ev.data.action === 'SESSION_ACTIVE_REPLY') {
+                            sessionStorage.setItem(sessionKey, 'active');
+                        }
+                    };
+                }
+
+                setTimeout(function() {
+                    if (!sessionStorage.getItem(sessionKey)) {
+                        // Tidak ada tab yang aktif sebelumnya (user baru saja membuka tab baru setelah keluar/tutup tab)
+                        // Segera logout agar tidak auto-login!
+                        window.location.replace("{{ route('logout') }}");
+                    }
+                }, 200);
+            } else {
+                // Tab ini aktif, siap menjawab query dari tab baru yang dibuka
+                if (typeof BroadcastChannel !== 'undefined') {
+                    var channel = new BroadcastChannel(channelName);
+                    channel.onmessage = function(ev) {
+                        if (ev.data && ev.data.action === 'QUERY_ACTIVE_SESSION') {
+                            channel.postMessage({ action: 'SESSION_ACTIVE_REPLY' });
+                        }
+                    };
+                }
+            }
+        })();
+        @else
+        // Di halaman guest (Login / Register): Pasang listener form submit
+        document.addEventListener('DOMContentLoaded', function() {
+            sessionStorage.removeItem('warunggenz_tab_session');
+            document.querySelectorAll('form').forEach(function(form) {
+                form.addEventListener('submit', function() {
+                    sessionStorage.setItem('warunggenz_tab_session', 'active');
+                });
+            });
+        });
+        @endauth
     </script>
 </body>
 </html>
