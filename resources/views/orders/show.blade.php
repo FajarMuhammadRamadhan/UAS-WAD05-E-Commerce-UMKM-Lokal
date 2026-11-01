@@ -41,7 +41,7 @@
                             default => ucfirst($order->status)
                         };
 
-                        // Tentukan nama Kasir / Petugas Toko (bukan nama pelanggan pemesan)
+                        // Tentukan nama Petugas Toko / Admin (bukan nama pelanggan pemesan)
                         if ($order->user && $order->user->canManageOrders()) {
                             $staffName = $order->user->name;
                         } elseif (Auth::check() && Auth::user()->canManageOrders()) {
@@ -63,7 +63,7 @@
                     <span class="fw-bold text-dark fs-6 mt-1 d-block">{{ $order->customer_name ?? 'Pelanggan Umum' }}</span>
                 </div>
                 <div class="col-12 col-sm-4 text-center border-bottom border-sm-bottom-0 border-sm-end pb-2 pb-sm-0 mb-1 mb-sm-0 px-sm-2">
-                    <span class="stat-label text-muted d-block small text-uppercase" style="letter-spacing: 0.05em; font-size: 0.72rem;">Kasir / Petugas</span>
+                    <span class="stat-label text-muted d-block small text-uppercase" style="letter-spacing: 0.05em; font-size: 0.72rem;">Petugas Toko</span>
                     <span class="fw-semibold text-dark fs-6 mt-1 d-block">{{ $staffName }}</span>
                 </div>
                 <div class="col-12 col-sm-4 text-center ps-sm-2">
@@ -303,7 +303,7 @@
         margin-bottom: 20px !important;
     }
 
-    /* Menjaga 3 kolom data pelanggan, kasir, tanggal & waktu tetap sejajar horizontal */
+    /* Menjaga 3 kolom data pelanggan, petugas toko, tanggal & waktu tetap sejajar horizontal */
     .invoice-meta {
         display: flex !important;
         flex-direction: row !important;
@@ -394,7 +394,7 @@
 </style>
 
 @if($order->status !== 'canceled')
-<!-- Modal Batalkan Pesanan oleh Admin / Kasir -->
+<!-- Modal Batalkan Pesanan oleh Admin -->
 <div class="modal fade" id="adminCancelModal" tabindex="-1" aria-labelledby="adminCancelModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content rounded-4 border-0 shadow">

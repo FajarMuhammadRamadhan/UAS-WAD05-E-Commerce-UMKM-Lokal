@@ -180,7 +180,7 @@
                     <th>No. Invoice</th>
                     <th>Waktu</th>
                     <th>Pelanggan</th>
-                    <th>Kasir</th>
+                    <th>Petugas Toko</th>
                     <th>Rincian Produk Terjual</th>
                     <th>Total Bayar</th>
                     <th style="width: 140px;">Status</th>
@@ -197,7 +197,7 @@
                         </a>
                         <div class="mt-1 d-flex align-items-center gap-1">
                             <span class="badge bg-light text-secondary border text-uppercase" style="font-size: 0.65rem;">
-                                {{ $order->payment_method ?? 'KASIR POS' }}
+                                {{ $order->payment_method ?? 'TOKO (OFFLINE)' }}
                             </span>
                             @if($order->status === 'paid' && in_array($order->payment_method, ['transfer', 'qris']))
                                 <span class="badge bg-success-subtle text-success" style="font-size: 0.62rem;">Lunas Online</span>

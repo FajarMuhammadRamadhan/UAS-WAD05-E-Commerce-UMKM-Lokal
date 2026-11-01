@@ -470,7 +470,7 @@ class OrderController extends Controller
         return back()->with('success', 'Pembayaran berhasil dikonfirmasi! Admin warung telah menerima notifikasi dan sedang memproses pengiriman pesanan Anda.');
     }
 
-    // API Notifikasi untuk Admin & Kasir: Menampilkan pesanan aktif yang belum close (pending / paid)
+    // API Notifikasi untuk Admin: Menampilkan pesanan aktif yang belum close (pending / paid)
     public function unreadOrdersCount()
     {
         // Pesanan aktif yang belum close (belum selesai/batal)
@@ -514,7 +514,7 @@ class OrderController extends Controller
         ]);
     }
 
-    // Admin/Kasir: Tandai semua notifikasi sudah dibaca (Tutup Notifikasi)
+    // Admin: Tandai semua notifikasi sudah dibaca (Tutup Notifikasi)
     public function markAllNotificationsRead()
     {
         Order::where('is_admin_read', false)->update(['is_admin_read' => true]);

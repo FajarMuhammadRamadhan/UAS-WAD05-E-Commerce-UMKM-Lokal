@@ -13,7 +13,7 @@
 
 ## 📌 Ringkasan Project
 
-**WarungGenZ** adalah aplikasi web inventaris dan belanja online (*e-commerce*) yang dirancang khusus untuk memenuhi kebutuhan digitalisasi toko kelontong dan UMKM lokal. Aplikasi ini memungkinkan pemilik toko mengelola produk, stok, transaksi kasir fisik (POS), pengeluaran operasional, serta menerima pesanan belanja online dari pelanggan secara *real-time*.
+**WarungGenZ** adalah aplikasi web inventaris dan belanja online (*e-commerce*) yang dirancang khusus untuk memenuhi kebutuhan digitalisasi toko kelontong dan UMKM lokal. Aplikasi ini memungkinkan pemilik toko mengelola produk, stok, transaksi penjualan toko fisik (POS), pengeluaran operasional, serta menerima pesanan belanja online dari pelanggan secara *real-time*.
 
 Aplikasi dibangun menggunakan arsitektur **Model-View-Controller (MVC)** dengan framework **Laravel 12**, basis data relasional **MySQL**, antarmuka responsif **Bootstrap 5**, serta notifikasi interaktif **SweetAlert2**.
 
@@ -41,7 +41,7 @@ categories (1) ---< products (N) -------------+
 users (1) --------< expenses (N)
 ```
 
-1. **`users`** : Menyimpan akun pengguna dengan sistem role (`admin`, `kasir`, `customer`).
+1. **`users`** : Menyimpan akun pengguna dengan sistem role (`admin`, `customer`).
 2. **`categories`** : Daftar kategori barang (Sembako, Makanan & Minuman, Kebutuhan Rumah Tangga, Perawatan Tubuh, Lainnya).
 3. **`products`** : Data katalog produk (nama, harga, stok, deskripsi, gambar) berelasi dengan `category_id`.
 4. **`orders`** : Data transaksi dan pesanan (nomor faktur, data pemesan, alamat, metode pembayaran, status, catatan pembatalan) berelasi dengan `user_id`.
@@ -53,9 +53,8 @@ users (1) --------< expenses (N)
 ## ✨ Fitur Utama Aplikasi
 
 ### 1. Autentikasi & Multi-Role Access Control
-* **3 Hak Akses (Role):**
-  * **Admin:** Akses penuh ke seluruh fitur (CRUD produk, kasir, laporan penjualan, pengeluaran, rekap bulanan, manajemen pembatalan).
-  * **Kasir:** Akses ke transaksi kasir fisik (POS), melihat riwayat faktur, dan mencetak nota.
+* **2 Hak Akses (Role):**
+  * **Admin:** Akses penuh ke seluruh fitur (CRUD katalog produk, transaksi penjualan toko fisik / POS, laporan penjualan, pengeluaran operasional, rekap bulanan, serta manajemen status & pembatalan pesanan).
   * **Customer (Pelanggan):** Akses ke katalog produk, pemesanan online (*checkout*), riwayat pesanan (*My Orders*), ganti metode bayar, dan pembatalan pesanan mandiri.
 * Proteksi rute dengan Middleware Laravel, session berbasis database, dan keamanan CSRF Token di seluruh form.
 
@@ -72,12 +71,12 @@ users (1) --------< expenses (N)
 ### 3. Pelacakan Pesanan & Nota Penjualan Resmi
 * **Status Tracker 3 Tahap:** *1. Diterima / Menunggu Bayar* &rarr; *2. Diproses / Lunas* &rarr; *3. Selesai Diterima*.
 * **Auto-Sync Real-Time:** Status pesanan di layar pelanggan otomatis terbarui tanpa reload manual ketika admin mengubah status transaksi.
-* **Cetak Faktur Standar Retail:** Tata letak faktur siap cetak ukuran A4/struk dengan header resmi, rincian barang, total pembayaran, catatan penukaran 1x24 jam, serta tanda tangan petugas/kasir.
+* **Cetak Faktur Standar Retail:** Tata letak faktur siap cetak ukuran A4/struk dengan header resmi, rincian barang, total pembayaran, catatan penukaran 1x24 jam, serta tanda tangan petugas/admin toko.
 
-### 4. Transaksi Kasir (Point of Sale / POS)
+### 4. Transaksi Penjualan Toko (Point of Sale / POS)
 * Pencatatan penjualan langsung di toko fisik dengan pemilih produk (*product picker*) interaktif dan pencarian cepat.
 * Pengurangan stok produk otomatis secara aman melalui *database transaction lock*.
-* Pembatalan transaksi oleh Admin/Kasir disertai kolom catatan/alasan bebas yang langsung dikirim ke notifikasi pelanggan.
+* Pembatalan transaksi oleh Admin disertai kolom catatan/alasan bebas yang langsung dikirim ke notifikasi pelanggan.
 
 ### 5. Ringkasan Keuangan & Manajemen Pengeluaran
 * **Statistik Dashboard:** Total pemasukan, rekap penjualan bulanan, total pengeluaran operasional, saldo bersih (*net profit*), serta valuasi nilai aset stok.
@@ -96,7 +95,7 @@ Aplikasi dapat langsung diuji di **[http://103.142.202.202](http://103.142.202.2
 
 | Role | Email | Password | Hak Akses |
 | :--- | :--- | :--- | :--- |
-| **Administrator** | `testaja@gmail.com` | `12345678` | Akses penuh (Produk, Kasir, Pengeluaran, Finansial) |
+| **Administrator** | `testaja@gmail.com` | `12345678` | Akses penuh (Produk, Penjualan Toko, Pengeluaran, Finansial) |
 | **Admin Sekunder** | `testweb@gmail.com` | `12345678` | Akses penuh manajemen toko |
 | **Customer (Pelanggan)** | `testcustomer@gmail.com` | `12345678` | Belanja online, checkout, nota saya, pembatalan |
 | **Customer Baru** | *Daftar via menu Register* | *Bebas (min. 8 karakter)* | Otomatis terdaftar sebagai role `customer` |
@@ -137,7 +136,7 @@ Aplikasi dapat langsung diuji di **[http://103.142.202.202](http://103.142.202.2
    DB_CONNECTION=mysql
    DB_HOST=127.0.0.1
    DB_PORT=3306
-   DB_DATABASE=warungkita_db
+   DB_DATABASE=warunggenz_db
    DB_USERNAME=root
    DB_PASSWORD=
    ```
@@ -148,11 +147,11 @@ Aplikasi dapat langsung diuji di **[http://103.142.202.202](http://103.142.202.2
    ```
 
 5. **Migrasi Database & Seeder:**
-   Buat database bernama `warungkita_db` di MySQL / phpMyAdmin, lalu jalankan:
+   Buat database bernama `warunggenz_db` di MySQL / phpMyAdmin, lalu jalankan:
    ```bash
    php artisan migrate --seed
    ```
-   *(Atau import file SQL siap pakai `warungkita_db.sql` yang tersedia di direktori utama).*
+   *(Atau import file SQL siap pakai `warunggenz_db.sql` yang tersedia di direktori utama).*
 
 6. **Membuat Symlink Storage Gambar:**
    ```bash
@@ -175,8 +174,8 @@ Aplikasi dapat langsung diuji di **[http://103.142.202.202](http://103.142.202.2
 
 ## 🧪 Pengujian Otomatis (Automated Testing)
 
-Project ini dilengkapi dengan **17 skenario automated feature & unit tests** (`122 assertions`) menggunakan PHPUnit / Laravel Test Suite yang mencakup:
-* Proteksi hak akses role (Customer tidak bisa membuka menu manajemen Admin/Kasir).
+Project ini dilengkapi dengan **17 skenario automated feature & unit tests** (`118 assertions`) menggunakan PHPUnit / Laravel Test Suite yang mencakup:
+* Proteksi hak akses role (Customer tidak bisa membuka menu manajemen Admin).
 * Pengurangan dan pemulihan stok otomatis saat transaksi dibuat atau dibatalkan.
 * Pembatalan transaksi ganda (*concurrency lock safety*).
 * Skenario checkout belanja online customer hingga penerimaan notifikasi admin.
@@ -199,9 +198,9 @@ php artisan test
 │   │   ├── Controllers/
 │   │   │   ├── AuthController.php       # Login, Register, Logout
 │   │   │   ├── ExpenseController.php    # Manajemen Pengeluaran Operasional
-│   │   │   ├── OrderController.php      # Transaksi Kasir, Checkout, Nota, Notifikasi
+│   │   │   ├── OrderController.php      # Transaksi Penjualan, Checkout, Nota, Notifikasi
 │   │   │   └── ProductController.php    # CRUD Produk, Kategori, Dashboard Finansial
-│   │   └── Middleware/                  # Gate otorisasi Admin, Kasir, & Customer
+│   │   └── Middleware/                  # Gate otorisasi Admin & Customer
 │   └── Models/
 │       ├── Category.php                 # Model Kategori Produk
 │       ├── Expense.php                  # Model Pengeluaran
@@ -211,8 +210,7 @@ php artisan test
 │       └── User.php                     # Model Pengguna & Role Helper
 ├── database/
 │   ├── migrations/                      # 6 Berkas Migrasi Skema Tabel Database
-│   ├── seeders/                         # Seeder Data Awal Akun, Kategori, & Produk
-│   └── warungkita_db.sql                # Backup Dump SQL Database
+│   └── seeders/                         # Seeder Data Awal Akun, Kategori, & Produk
 ├── public/
 │   ├── css/custom.css                   # Stylesheet Khusus Mobile-First & Anti-Slop
 │   ├── warunggenz.svg                   # Logo Identitas Brand Toko
@@ -221,7 +219,7 @@ php artisan test
 │   ├── auth/                            # Tampilan Login & Register
 │   ├── expenses/                        # Tampilan Pencatatan Pengeluaran
 │   ├── layouts/                         # Master Layout & Navbar Responsif
-│   ├── orders/                          # View Kasir, Checkout, Pesanan Saya, Nota
+│   ├── orders/                          # View Transaksi Penjualan, Checkout, Pesanan Saya, Nota
 │   └── products/                        # View Katalog, Tambah/Edit Produk
 ├── routes/
 │   └── web.php                          # Deklarasi Routing & Group Middleware
@@ -229,7 +227,7 @@ php artisan test
 │   ├── Feature/
 │   │   └── WarungGenZWorkflowTest.php   # 17 Test Case Alur Lengkap Sistem
 │   └── Unit/
-├── DOKUMEN_LAPORAN_UAS.md               # Laporan Lengkap Dokumentasi Akademik UAS
+├── warunggenz_db.sql                    # Backup Dump SQL Database
 ├── README.md                            # Panduan & Dokumentasi Repository GitHub
 └── setup-nginx.sh                       # Script Otomasi Deployment Server Ubuntu
 ```

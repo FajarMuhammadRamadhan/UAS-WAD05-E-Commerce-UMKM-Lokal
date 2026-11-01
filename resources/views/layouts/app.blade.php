@@ -37,7 +37,7 @@
             <!-- Right Controls: Lonceng Notifikasi & Toggler (Akses Cepat di Mobile & Desktop) -->
             <div class="d-flex align-items-center gap-2 order-lg-last">
                 @auth
-                <!-- Lonceng Notifikasi (Tampil untuk Admin, Kasir, dan Customer) -->
+                <!-- Lonceng Notifikasi (Tampil untuk Admin dan Customer) -->
                 <div class="dropdown">
                     <button class="btn btn-outline-soft btn-sm position-relative shadow-none border px-2 py-1" type="button" id="notifDropdown" data-bs-toggle="dropdown" aria-expanded="false" title="Notifikasi" style="min-height: 38px;">
                         <i class="bi bi-bell fs-6 text-dark"></i>

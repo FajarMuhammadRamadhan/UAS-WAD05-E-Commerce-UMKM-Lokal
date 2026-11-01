@@ -280,26 +280,21 @@ class WarungGenZWorkflowTest extends TestCase
         $responseAll->assertSee('INV-PAGE-015');
     }
 
-    public function test_kasir_role_can_manage_orders_but_cannot_access_admin_features(): void
+    public function test_customer_cannot_access_admin_or_orders_management(): void
     {
-        $kasir = User::factory()->create(['role' => 'kasir']);
-        $product = $this->createProduct('Gula Pasir', 15000, 20);
+        $this->actingAs($this->customer);
 
-        $this->actingAs($kasir);
+        // Customer cannot access orders management
+        $this->get(route('orders.index'))->assertForbidden();
+        $this->get(route('orders.create'))->assertForbidden();
 
-        // Kasir can view catalog and orders
-        $this->get(route('products.index'))->assertOk()->assertSee('Gula Pasir')->assertSee('Catat Penjualan');
-        $this->get(route('orders.index'))->assertOk();
-        $this->get(route('orders.create'))->assertOk();
-
-        // Kasir role label test
-        $this->assertSame('Kasir', $kasir->getRoleLabel());
-        $this->assertSame('Customer', $this->customer->getRoleLabel());
-        $this->assertSame('Administrator', $this->admin->getRoleLabel());
-
-        // Kasir cannot create product or expenses
+        // Customer cannot create product or expenses
         $this->get(route('products.create'))->assertForbidden();
         $this->get(route('expenses.index'))->assertForbidden();
+
+        // Role labels test (2 roles: Administrator & Customer)
+        $this->assertSame('Customer', $this->customer->getRoleLabel());
+        $this->assertSame('Administrator', $this->admin->getRoleLabel());
     }
 
     public function test_customer_can_order_online_and_admin_receives_notification(): void

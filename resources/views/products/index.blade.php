@@ -450,7 +450,7 @@
                         </td>
                         <td>
                             <div class="fw-semibold text-dark">{{ $order->customer_name ?? 'Pelanggan Umum' }}</div>
-                            <small class="text-muted">{{ $order->user->name ?? 'Kasir' }}</small>
+                            <small class="text-muted">{{ $order->user->name ?? 'Admin' }}</small>
                         </td>
                         <td>
                             <span class="small text-muted">

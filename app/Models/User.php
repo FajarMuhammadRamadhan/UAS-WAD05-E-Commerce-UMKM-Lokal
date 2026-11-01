@@ -58,14 +58,6 @@ class User extends Authenticatable
     }
 
     /**
-     * Cek apakah user adalah kasir
-     */
-    public function isKasir(): bool
-    {
-        return $this->role === 'kasir';
-    }
-
-    /**
      * Cek apakah user adalah customer (pelanggan umum)
      */
     public function isCustomer(): bool
@@ -74,11 +66,11 @@ class User extends Authenticatable
     }
 
     /**
-     * Cek apakah user dapat mengelola transaksi penjualan (Admin & Kasir)
+     * Cek apakah user dapat mengelola transaksi penjualan (Khusus Admin)
      */
     public function canManageOrders(): bool
     {
-        return in_array($this->role, ['admin', 'kasir'], true);
+        return $this->role === 'admin';
     }
 
     /**
@@ -88,7 +80,6 @@ class User extends Authenticatable
     {
         return match ($this->role) {
             'admin' => 'Administrator',
-            'kasir' => 'Kasir',
             default => 'Customer',
         };
     }

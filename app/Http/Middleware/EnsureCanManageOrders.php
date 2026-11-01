@@ -15,7 +15,7 @@ class EnsureCanManageOrders
      */
     public function handle(Request $request, Closure $next): Response
     {
-        abort_unless($request->user()?->canManageOrders(), 403);
+        abort_unless($request->user()?->isAdmin(), 403);
 
         return $next($request);
     }

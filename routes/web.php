@@ -34,7 +34,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/api/customer/notifications/mark-read', [OrderController::class, 'markCustomerNotificationsRead'])->name('notifications.customer_mark_read');
 });
 
-// Transaksi Penjualan (Khusus Kasir & Admin, Customer tidak diizinkan)
+// Transaksi Penjualan (Khusus Admin, Customer tidak diizinkan)
 Route::middleware(['auth', 'can_manage_orders'])->group(function () {
     Route::get('/orders', [OrderController::class, 'index'])->name('orders.index');
     Route::get('/orders/create', [OrderController::class, 'create'])->name('orders.create');
