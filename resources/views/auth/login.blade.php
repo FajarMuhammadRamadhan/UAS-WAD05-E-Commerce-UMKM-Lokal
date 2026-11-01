@@ -64,19 +64,6 @@
                     <i class="bi bi-box-arrow-in-right"></i>
                     <span>Masuk ke Akun</span>
                 </button>
-
-                <!-- Bantuan Akses Cepat untuk Pengujian & Demo -->
-                <div class="mb-2 p-2 bg-light rounded-3 border text-center">
-                    <span class="text-muted d-block small mb-1" style="font-size: 0.72rem;">Isi Cepat Sekali Klik (Demo/Ujian):</span>
-                    <div class="d-flex justify-content-center gap-2 flex-wrap">
-                        <button type="button" class="btn btn-sm btn-outline-primary py-0 px-2 fw-semibold" style="font-size: 0.72rem;" onclick="quickLogin('testaja@gmail.com', '12345678')">
-                            <i class="bi bi-shield-lock me-1"></i>Akun Admin
-                        </button>
-                        <button type="button" class="btn btn-sm btn-outline-success py-0 px-2 fw-semibold" style="font-size: 0.72rem;" onclick="quickLogin('testcustomer@gmail.com', '12345678')">
-                            <i class="bi bi-person me-1"></i>Akun Pelanggan
-                        </button>
-                    </div>
-                </div>
             </form>
 
             <script>
@@ -86,16 +73,6 @@
                 'testweb@gmail.com': '12345678',
                 'testcustomer@gmail.com': '12345678'
             };
-
-            function quickLogin(email, pass) {
-                const emailInput = document.getElementById('email');
-                const passwordInput = document.getElementById('password');
-                if (emailInput && passwordInput) {
-                    emailInput.value = email;
-                    passwordInput.value = pass;
-                    passwordInput.focus();
-                }
-            }
 
             function autoFillPassword() {
                 const emailInput = document.getElementById('email');
