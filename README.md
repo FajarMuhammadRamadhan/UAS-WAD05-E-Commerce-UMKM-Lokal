@@ -24,7 +24,7 @@ Aplikasi dibangun menggunakan arsitektur **Model-View-Controller (MVC)** dengan 
 * **Backend Framework:** Laravel 12 (PHP 8.2+)
 * **Database:** MySQL (Engine InnoDB, Relasional 6 Tabel)
 * **Frontend:** Blade Templating, Bootstrap 5.3, Bootstrap Icons
-* **UI/UX:** Mobile-First Responsive, Anti-Slop Clean Design System
+* **UI/UX:** Mobile-First Responsive, Clean Modern Retail Design System
 * **Alert & Pop-up:** SweetAlert2
 * **Web Server Live:** Nginx + PHP 8.3-FPM di Ubuntu Server (Cloud VM)
 
@@ -83,9 +83,9 @@ users (1) --------< expenses (N)
 * **Filter Rekap Per Bulan:** Pemilik toko dapat melihat rincian histori transaksi berdasarkan kelompok bulan tertentu.
 * **Catatan Pengeluaran (`/expenses`):** Input biaya operasional, belanja kulakan stok, tagihan listrik/air, dan operasional lainnya.
 
-### 6. Desain Mobile-First & Bebas "Gaya AI" (Anti-Slop Clean Design)
-* **Mobile-First Experience:** Tampilan khusus layar smartphone (kartu pesanan vertikal tanpa scroll horizontal, target sentuh tombol minimal 44px, lonceng notifikasi langsung di bar atas).
-* **Clean & Professional UI:** Menghilangkan elemen klise generator AI (gradien neon ungu, efek blur *glassmorphism* berlebihan, *pill shape* seragam) dan menggantinya dengan palet warna retail bersih, kontras tinggi, dan tipografi jelas.
+### 6. Desain Antarmuka Mobile-First & Modern Retail UI
+* **Mobile-First Experience:** Tampilan dioptimalkan khusus untuk layar smartphone dengan kartu pesanan vertikal tanpa scroll horizontal, target sentuh tombol minimal 44px, serta tata letak navigasi yang ergonomis.
+* **Clean & Professional UI:** Mengadopsi prinsip desain retail modern dengan palet warna yang bersih, kontras warna yang nyaman di mata, serta tipografi yang jelas dan mudah dibaca oleh pengguna.
 
 ---
 
@@ -212,7 +212,7 @@ php artisan test
 │   ├── migrations/                      # 6 Berkas Migrasi Skema Tabel Database
 │   └── seeders/                         # Seeder Data Awal Akun, Kategori, & Produk
 ├── public/
-│   ├── css/custom.css                   # Stylesheet Khusus Mobile-First & Anti-Slop
+│   ├── css/custom.css                   # Stylesheet Khusus Mobile-First & Desain Responsif
 │   ├── warunggenz.svg                   # Logo Identitas Brand Toko
 │   └── index.php                        # Entry Point Aplikasi
 ├── resources/views/
