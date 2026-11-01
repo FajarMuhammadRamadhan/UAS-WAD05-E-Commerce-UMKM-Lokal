@@ -82,20 +82,45 @@
 
                 <div class="mb-4">
                     <label for="image" class="form-label">Foto / Gambar Produk</label>
-                    @if($product->image)
-                        <div class="d-flex align-items-center gap-3 mb-2 p-2 bg-light rounded-3 border">
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-thumb" style="width: 56px; height: 56px;">
+                    
+                    <!-- Box Pratinjau Foto (Foto Saat Ini atau Pratinjau Foto Baru) -->
+                    <div id="imagePreviewBox" class="mb-2 {{ $product->image ? '' : 'd-none' }}">
+                        <div class="d-flex align-items-center gap-3 p-2 bg-light rounded-3 border">
+                            <img id="imagePreview" src="{{ $product->image ? asset('storage/' . $product->image) : '#' }}" alt="{{ $product->name }}" class="product-thumb" style="width: 64px; height: 64px; object-fit: cover; border-radius: 8px;" onerror="this.onerror=null; this.src='https://placehold.co/100x100?text={{ urlencode($product->name) }}';">
                             <div class="small text-muted">
-                                Foto produk saat ini tersimpan. Unggah foto baru di bawah jika ingin menggantinya.
+                                <span class="fw-semibold text-dark d-block" id="imagePreviewStatus">{{ $product->image ? 'Foto Produk Saat Ini' : 'Pratinjau Foto Baru' }}</span>
+                                <span id="imagePreviewDesc">{{ $product->image ? 'Foto tersimpan di database. Pilih foto baru di bawah jika ingin menggantinya.' : '' }}</span>
                             </div>
                         </div>
-                    @endif
-                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/jpeg,image/png,image/jpg,image/webp">
-                    <div class="form-text small text-muted">Biarkan kosong jika tidak ingin mengganti foto saat ini.</div>
+                    </div>
+
+                    <input type="file" class="form-control @error('image') is-invalid @enderror" id="image" name="image" accept="image/jpeg,image/png,image/jpg,image/webp" onchange="previewImage(this)">
+                    <div class="form-text small text-muted">Biarkan kosong jika tidak ingin mengganti foto saat ini. Format: JPG, PNG, WEBP (Maksimal 2MB).</div>
                     @error('image') 
                         <div class="invalid-feedback">{{ $message }}</div> 
                     @enderror
                 </div>
+
+                <script>
+                function previewImage(input) {
+                    const previewBox = document.getElementById('imagePreviewBox');
+                    const previewImg = document.getElementById('imagePreview');
+                    const previewStatus = document.getElementById('imagePreviewStatus');
+                    const previewDesc = document.getElementById('imagePreviewDesc');
+
+                    if (input.files && input.files[0]) {
+                        const file = input.files[0];
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            previewImg.src = e.target.result;
+                            previewBox.classList.remove('d-none');
+                            previewStatus.innerText = 'Pratinjau Foto Pengganti yang Dipilih';
+                            previewDesc.innerText = file.name + ' (' + (file.size / 1024).toFixed(1) + ' KB)';
+                        };
+                        reader.readAsDataURL(file);
+                    }
+                }
+                </script>
 
                 <div class="d-flex justify-content-between align-items-center">
                     <a href="{{ route('products.index') }}" class="btn-outline-soft text-decoration-none">

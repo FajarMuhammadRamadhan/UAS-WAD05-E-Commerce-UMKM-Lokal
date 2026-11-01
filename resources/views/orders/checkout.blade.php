@@ -238,11 +238,13 @@ input[type=number] {
             html += `<optgroup label="📂 Kategori: ${catName}">`;
             prods.forEach(prod => {
                 const isSelected = (preselectedId && String(prod.id) === String(preselectedId));
+                const imgUrl = prod.image ? `{{ asset('storage') }}/${prod.image}` : '';
                 html += `<option value="${prod.id}" 
                     data-price="${prod.price}" 
                     data-stock="${prod.stock}" 
                     data-category="${catName}"
                     data-name="${prod.name}"
+                    data-image="${imgUrl}"
                     ${isSelected ? 'selected' : ''}>
                     ${prod.name} (Stok: ${prod.stock} pcs) - Rp ${Number(prod.price).toLocaleString('id-ID')}
                 </option>`;
@@ -281,11 +283,17 @@ input[type=number] {
                 </select>
             </div>
 
-            <!-- Detail Kolom Spesifik Produk (Kategori, Harga, Sisa Stok, Kuantitas, Subtotal) -->
+            <!-- Detail Kolom Spesifik Produk (Foto, Kategori, Harga, Sisa Stok, Kuantitas, Subtotal) -->
             <div class="product-detail-grid mb-2" id="detail-box-${index}" style="display: none;">
                 <div class="row align-items-center g-2">
-                    <div class="col-sm-6">
-                        <div class="d-flex align-items-center gap-2 mb-1">
+                    <div class="col-auto">
+                        <img id="prod-img-${index}" src="" alt="Foto Produk" class="rounded-3 border" style="width: 52px; height: 52px; object-fit: cover; display: none;" onerror="this.style.display='none'; document.getElementById('prod-img-ph-${index}').style.display='flex';">
+                        <div id="prod-img-ph-${index}" class="rounded-3 bg-light border d-flex align-items-center justify-content-center text-muted" style="width: 52px; height: 52px;">
+                            <i class="bi bi-box-seam fs-5"></i>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="d-flex align-items-center gap-2 mb-1 flex-wrap">
                             <span class="badge-soft badge-soft-blue" id="cat-badge-${index}" style="font-size: 0.72rem;">Kategori</span>
                             <span class="badge-soft badge-soft-emerald" id="stock-badge-${index}" style="font-size: 0.72rem;">Stok: 0 pcs</span>
                         </div>
@@ -293,7 +301,7 @@ input[type=number] {
                             Harga Satuan: <strong class="text-dark" id="unit-price-${index}">Rp 0</strong>
                         </div>
                     </div>
-                    <div class="col-sm-6 text-sm-end">
+                    <div class="col-sm-5 text-sm-end mt-2 mt-sm-0">
                         <div class="d-inline-flex flex-column align-items-sm-end">
                             <div class="d-flex align-items-center gap-2">
                                 <span class="small text-muted fw-semibold">Jumlah:</span>
@@ -350,6 +358,19 @@ input[type=number] {
             const stock = parseInt(selectedOpt.dataset.stock, 10) || 0;
             const price = parseFloat(selectedOpt.dataset.price) || 0;
             const catName = selectedOpt.dataset.category || 'Umum';
+            const imgUrl = selectedOpt.dataset.image;
+
+            // Tampilkan thumbnail gambar produk jika ada
+            const imgEl = document.getElementById(`prod-img-${index}`);
+            const phEl = document.getElementById(`prod-img-ph-${index}`);
+            if (imgUrl && imgEl && phEl) {
+                imgEl.src = imgUrl;
+                imgEl.style.display = 'block';
+                phEl.style.display = 'none';
+            } else if (imgEl && phEl) {
+                imgEl.style.display = 'none';
+                phEl.style.display = 'flex';
+            }
 
             // Tampilkan box kolom produk
             detailBox.style.display = 'block';

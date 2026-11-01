@@ -245,7 +245,7 @@
                     <td class="text-center text-muted fw-semibold">{{ $loop->iteration }}</td>
                     <td>
                         @if($product->image)
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-thumb">
+                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-thumb" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'product-thumb-placeholder\'><i class=\'bi bi-image\'></i></div>';">
                         @else
                             <div class="product-thumb-placeholder">
                                 <i class="bi bi-image"></i>
@@ -340,7 +340,7 @@
     <div class="modern-card p-3 border shadow-sm">
         <div class="d-flex align-items-center gap-3">
             @if($product->image)
-                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="rounded-3 border" style="width: 58px; height: 58px; object-fit: cover;">
+                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="rounded-3 border" style="width: 58px; height: 58px; object-fit: cover;" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'rounded-3 bg-light border d-flex align-items-center justify-content-center text-muted\' style=\'width: 58px; height: 58px; font-size: 1.5rem;\'><i class=\'bi bi-image\'></i></div>';">
             @else
                 <div class="rounded-3 bg-light border d-flex align-items-center justify-content-center text-muted" style="width: 58px; height: 58px; font-size: 1.5rem;">
                     <i class="bi bi-image"></i>

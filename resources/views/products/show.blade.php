@@ -18,7 +18,7 @@
             <div class="row g-4 align-items-center">
                 <div class="col-md-5 text-center">
                     @if($product->image)
-                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid rounded-4 shadow-sm border" style="max-height: 260px; object-fit: cover; width: 100%;">
+                        <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="img-fluid rounded-4 shadow-sm border" style="max-height: 260px; object-fit: cover; width: 100%;" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'p-5 bg-light rounded-4 border d-flex flex-column align-items-center justify-content-center text-muted\' style=\'height: 240px;\'><i class=\'bi bi-image fs-1 mb-2\'></i><span class=\'small fw-semibold\'>Tidak ada foto produk</span></div>';">
                     @else
                         <div class="p-5 bg-light rounded-4 border d-flex flex-column align-items-center justify-content-center text-muted" style="height: 240px;">
                             <i class="bi bi-image fs-1 mb-2"></i>
