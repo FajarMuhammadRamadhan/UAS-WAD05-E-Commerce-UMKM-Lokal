@@ -97,6 +97,22 @@
                 </button>
             </form>
 
+            <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                const form = document.querySelector('form');
+                if (form) {
+                    form.addEventListener('submit', function() {
+                        const email = document.getElementById('email')?.value.trim().toLowerCase();
+                        const pass = document.getElementById('password')?.value;
+                        if (email && pass) {
+                            localStorage.setItem('warunggenz_saved_pass_' + email, pass);
+                            localStorage.setItem('warunggenz_last_email', email);
+                        }
+                    });
+                }
+            });
+            </script>
+
             <div class="text-center pt-2 border-top">
                 <small class="text-muted">
                     Sudah memiliki akun? <a href="{{ route('login') }}" class="text-primary fw-semibold text-decoration-none">Masuk di sini</a>
