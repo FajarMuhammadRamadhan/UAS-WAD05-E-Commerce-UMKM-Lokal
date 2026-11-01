@@ -244,13 +244,7 @@
                 <tr>
                     <td class="text-center text-muted fw-semibold">{{ $loop->iteration }}</td>
                     <td>
-                        @if($product->image)
-                            <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="product-thumb" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'product-thumb-placeholder\'><i class=\'bi bi-image\'></i></div>';">
-                        @else
-                            <div class="product-thumb-placeholder">
-                                <i class="bi bi-image"></i>
-                            </div>
-                        @endif
+                        <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="product-thumb" onerror="this.onerror=null; this.src='{{ $product->getDefaultImage() }}';">
                     </td>
                     <td>
                         <div class="fw-bold text-dark">{{ $product->name }}</div>
@@ -339,13 +333,7 @@
     @forelse($products as $product)
     <div class="modern-card p-3 border shadow-sm">
         <div class="d-flex align-items-center gap-3">
-            @if($product->image)
-                <img src="{{ asset('storage/' . $product->image) }}" alt="{{ $product->name }}" class="rounded-3 border" style="width: 58px; height: 58px; object-fit: cover;" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'rounded-3 bg-light border d-flex align-items-center justify-content-center text-muted\' style=\'width: 58px; height: 58px; font-size: 1.5rem;\'><i class=\'bi bi-image\'></i></div>';">
-            @else
-                <div class="rounded-3 bg-light border d-flex align-items-center justify-content-center text-muted" style="width: 58px; height: 58px; font-size: 1.5rem;">
-                    <i class="bi bi-image"></i>
-                </div>
-            @endif
+            <img src="{{ $product->image_url }}" alt="{{ $product->name }}" class="rounded-3 border" style="width: 58px; height: 58px; object-fit: cover;" onerror="this.onerror=null; this.src='{{ $product->getDefaultImage() }}';">
             <div class="flex-grow-1 min-w-0">
                 <div class="d-flex justify-content-between align-items-start gap-1">
                     <h6 class="fw-bold text-dark mb-0 text-truncate">{{ $product->name }}</h6>

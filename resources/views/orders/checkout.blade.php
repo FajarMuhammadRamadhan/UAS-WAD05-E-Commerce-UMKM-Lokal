@@ -238,7 +238,7 @@ input[type=number] {
             html += `<optgroup label="📂 Kategori: ${catName}">`;
             prods.forEach(prod => {
                 const isSelected = (preselectedId && String(prod.id) === String(preselectedId));
-                const imgUrl = prod.image ? `{{ asset('storage') }}/${prod.image}` : '';
+                const imgUrl = prod.image_url || '';
                 html += `<option value="${prod.id}" 
                     data-price="${prod.price}" 
                     data-stock="${prod.stock}" 

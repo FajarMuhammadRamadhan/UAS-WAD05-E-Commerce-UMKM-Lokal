@@ -155,7 +155,24 @@ class ProductController extends Controller
 
         $imagePath = null;
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('products', 'public');
+            $file = $request->file('image');
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+
+            // Simpan langsung di public/uploads/products (akses langsung static web server)
+            $uploadDir = public_path('uploads/products');
+            if (!file_exists($uploadDir)) {
+                @mkdir($uploadDir, 0775, true);
+            }
+            $file->move($uploadDir, $filename);
+
+            // Buat salinan di storage/app/public/products untuk sinkronisasi
+            $storageDir = storage_path('app/public/products');
+            if (!file_exists($storageDir)) {
+                @mkdir($storageDir, 0775, true);
+            }
+            @copy($uploadDir . '/' . $filename, $storageDir . '/' . $filename);
+
+            $imagePath = 'uploads/products/' . $filename;
         }
 
         Product::create([
@@ -205,9 +222,30 @@ class ProductController extends Controller
         $imagePath = $product->image;
         if ($request->hasFile('image')) {
             if ($imagePath) {
-                Storage::disk('public')->delete($imagePath);
+                if (file_exists(public_path($imagePath))) {
+                    @unlink(public_path($imagePath));
+                }
+                Storage::disk('public')->delete(str_replace('uploads/', '', $imagePath));
             }
-            $imagePath = $request->file('image')->store('products', 'public');
+
+            $file = $request->file('image');
+            $filename = time() . '_' . uniqid() . '.' . $file->getClientOriginalExtension();
+
+            // Simpan langsung di public/uploads/products
+            $uploadDir = public_path('uploads/products');
+            if (!file_exists($uploadDir)) {
+                @mkdir($uploadDir, 0775, true);
+            }
+            $file->move($uploadDir, $filename);
+
+            // Buat salinan di storage/app/public/products
+            $storageDir = storage_path('app/public/products');
+            if (!file_exists($storageDir)) {
+                @mkdir($storageDir, 0775, true);
+            }
+            @copy($uploadDir . '/' . $filename, $storageDir . '/' . $filename);
+
+            $imagePath = 'uploads/products/' . $filename;
         }
 
         $product->update([
@@ -226,7 +264,10 @@ class ProductController extends Controller
     public function destroy(Product $product)
     {
         if ($product->image) {
-            Storage::disk('public')->delete($product->image);
+            if (file_exists(public_path($product->image))) {
+                @unlink(public_path($product->image));
+            }
+            Storage::disk('public')->delete(str_replace('uploads/', '', $product->image));
         }
 
         $product->delete();
