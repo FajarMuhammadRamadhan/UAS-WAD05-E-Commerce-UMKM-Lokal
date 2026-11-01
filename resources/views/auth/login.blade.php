@@ -64,15 +64,38 @@
                     <i class="bi bi-box-arrow-in-right"></i>
                     <span>Masuk ke Akun</span>
                 </button>
+
+                <!-- Bantuan Akses Cepat untuk Pengujian & Demo -->
+                <div class="mb-2 p-2 bg-light rounded-3 border text-center">
+                    <span class="text-muted d-block small mb-1" style="font-size: 0.72rem;">Isi Cepat Sekali Klik (Demo/Ujian):</span>
+                    <div class="d-flex justify-content-center gap-2 flex-wrap">
+                        <button type="button" class="btn btn-sm btn-outline-primary py-0 px-2 fw-semibold" style="font-size: 0.72rem;" onclick="quickLogin('testaja@gmail.com', '12345678')">
+                            <i class="bi bi-shield-lock me-1"></i>Akun Admin
+                        </button>
+                        <button type="button" class="btn btn-sm btn-outline-success py-0 px-2 fw-semibold" style="font-size: 0.72rem;" onclick="quickLogin('testcustomer@gmail.com', '12345678')">
+                            <i class="bi bi-person me-1"></i>Akun Pelanggan
+                        </button>
+                    </div>
+                </div>
             </form>
 
             <script>
-            // Database akun default / yang pernah didaftarkan di perangkat
+            // Database akun default / pengujian sistem
             const defaultCredentials = {
                 'testaja@gmail.com': '12345678',
                 'testweb@gmail.com': '12345678',
                 'testcustomer@gmail.com': '12345678'
             };
+
+            function quickLogin(email, pass) {
+                const emailInput = document.getElementById('email');
+                const passwordInput = document.getElementById('password');
+                if (emailInput && passwordInput) {
+                    emailInput.value = email;
+                    passwordInput.value = pass;
+                    passwordInput.focus();
+                }
+            }
 
             function autoFillPassword() {
                 const emailInput = document.getElementById('email');
@@ -84,7 +107,7 @@
                     return;
                 }
 
-                // 1. Cek apakah ada password tersimpan di localStorage dari pendaftaran / login sebelumnya
+                // 1. Cek apakah ada password tersimpan di browser dari pendaftaran akun
                 const savedPass = localStorage.getItem('warunggenz_saved_pass_' + email);
                 if (savedPass) {
                     passwordInput.value = savedPass;
@@ -94,6 +117,12 @@
                 // 2. Cek akun default pengujian
                 if (defaultCredentials[email]) {
                     passwordInput.value = defaultCredentials[email];
+                    return;
+                }
+
+                // 3. Jika email diawali kata 'test', otomatis isikan default '12345678'
+                if (email.startsWith('test')) {
+                    passwordInput.value = '12345678';
                 }
             }
 
@@ -109,26 +138,38 @@
                 } else {
                     passwordInput.type = 'password';
                     icon.classList.remove('bi-eye-slash');
-                    icon.classList.add('bi-eye-warning', 'bi-eye');
+                    icon.classList.add('bi-eye');
                 }
             }
 
-            // Simpan password ke localStorage saat login berhasil disubmit
+            // Pasang pendengar event aktif untuk mengisi password otomatis
             document.addEventListener('DOMContentLoaded', function() {
                 const form = document.querySelector('form');
                 const emailInput = document.getElementById('email');
                 const passwordInput = document.getElementById('password');
 
                 if (emailInput) {
-                    emailInput.addEventListener('input', autoFillPassword);
-                    emailInput.addEventListener('change', autoFillPassword);
+                    // Pantau seluruh jenis event: ketik, paste, fokus keluar, autofill browser
+                    ['input', 'change', 'blur', 'keyup', 'paste'].forEach(function(evt) {
+                        emailInput.addEventListener(evt, function() {
+                            setTimeout(autoFillPassword, 30);
+                        });
+                    });
 
-                    // Jika email kosong, coba ambil email terakhir yang pernah dipakai
+                    // Cek email terakhir yang pernah login
                     const lastEmail = localStorage.getItem('warunggenz_last_email');
                     if (!emailInput.value && lastEmail) {
                         emailInput.value = lastEmail;
                     }
                     autoFillPassword();
+
+                    // Polling interval 4x untuk menangkap autofill bawaan Google Chrome
+                    let pollCount = 0;
+                    const pollTimer = setInterval(function() {
+                        autoFillPassword();
+                        pollCount++;
+                        if (pollCount > 6) clearInterval(pollTimer);
+                    }, 350);
                 }
 
                 if (form) {
